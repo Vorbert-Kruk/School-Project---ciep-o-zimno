@@ -1,0 +1,73 @@
+:root {
+    --dark-color: #232323;
+    --light-color: #E5E5E5;
+    --red-color: hsl(0, 85%, 60%);
+    --blue-color: hsl(210, 90%, 60%);
+    --green-color: hsl(105, 80%, 43%);
+
+    --container-size: 45vw;
+    --container-offset: calc(100vw - var(--container-size));
+
+    --box-size: calc(var(--container-size) * .1);
+    --box-color: #565656;
+    --box-font-size: calc(var(--container-size) * .035);
+
+    --communicate-size: calc(10px + 15 * calc(100vw - 450px) / 450);
+    --communicate-color: #F4F4F4;
+}
+body {
+    background-color: var(--dark-color);
+    font-family: Helvetica, sans-serif;
+    overflow-x: hidden;
+}
+.box-container {
+    position: absolute;
+    display: block; 
+    /* top: calc(var(--container-offset) * .55); */
+    top: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: var(--container-size);
+    margin-bottom: 50px;
+}
+.box {
+    position: relative;
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    width: calc(var(--box-size) * .95);
+    margin-top: calc(var(--box-size) * 1/30);
+    height: var(--box-size);
+    background-color: var(--box-color);
+    cursor: pointer;
+    transition: background-color 350ms ease;
+}
+.box::after {
+    content: attr(data-number);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: var(--box-font-size);
+    color: var(--light-color);
+    font-weight: bold;
+}
+.box:not(:nth-of-type(10n)) {
+    margin-right: calc(var(--box-size) * 1/18);
+}
+.box.incorrect {
+    background-color: var(--red-color);
+}
+.box.correct {
+    background-color: var(--green-color);
+}
+.game-communicate {
+    position: fixed;
+    bottom: 40px;
+    margin: 0;
+    width: 100%;
+    font-size: var(--communicate-size);
+    text-align: center;
+    pointer-events: none;
+    color: var(--communicate-color);
+}
