@@ -1,1 +1,1 @@
-# School-Project---ciep-o-zimno
+# School-Project---cieplo-zimno
